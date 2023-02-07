@@ -133,22 +133,22 @@ struct Calculator {
 
       // Not exposed to air
       if (containsA && containsB) {
-#ifdef USE_BTREE
+#ifdef USE_ABSL_FLAT_SET
         // For some reason this is required with abseil's btree implementation.
-        it = sides.erase(it++);
-#else
         sides.erase(it++);
+#else
+        it = sides.erase(it);
 #endif
         continue;
       }
 
       // Not exposed to lava
       if (!isLavaSide(side)) {
-#ifdef USE_BTREE
+#ifdef USE_ABSL_FLAT_SET
         // For some reason this is required with abseil's btree implementation.
-        it = sides.erase(it++);
-#else
         sides.erase(it++);
+#else
+        it = sides.erase(it);
 #endif
         continue;
       }

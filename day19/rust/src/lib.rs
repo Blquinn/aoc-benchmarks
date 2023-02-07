@@ -78,6 +78,7 @@ struct State {
 }
 
 impl State {
+    // extern "C" 
     fn get_total(
         &mut self,
         bp: &Blueprint,
